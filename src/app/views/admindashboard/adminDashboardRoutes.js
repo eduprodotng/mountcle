@@ -294,7 +294,7 @@ const adminDashboardRoutes = [
     auth: "admin",
   },
   {
-    path: "/dashboard/view-receipt/:id",
+    path: "/dashboard/view-receipt/:studentId",
     element: <ViewReceipt />,
     auth: "admin",
   },

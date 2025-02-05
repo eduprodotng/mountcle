@@ -106,17 +106,9 @@ const Payment = () => {
                       <Menu id={`action-menu-${item._id}`}>
                         <MenuItem>
                           <ListItemIcon></ListItemIcon>
-                          <Link
-                            to={`/dashboard/manage-online-exam/${item._id}`}
-                          >
-                            Manage Questions
-                          </Link>
-                        </MenuItem>
-                        <MenuItem>
-                          <ListItemIcon></ListItemIcon>
 
                           <Link to={`/dashboard/view-result/${item._id}`}>
-                            View Result
+                            View Receipt
                           </Link>
                         </MenuItem>
                         <MenuItem>
@@ -143,7 +135,7 @@ const Payment = () => {
             page={page}
             component="div"
             rowsPerPage={rowsPerPage}
-            count={data.length}
+            count={data ? data.length : 0}
             onPageChange={handleChangePage}
             rowsPerPageOptions={[5, 10, 25]}
             onRowsPerPageChange={handleChangeRowsPerPage}

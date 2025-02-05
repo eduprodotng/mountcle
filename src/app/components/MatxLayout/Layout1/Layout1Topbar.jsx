@@ -117,21 +117,6 @@ const Layout1Topbar = () => {
     }
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/api/sessions")
-  //     .then((response) => {
-  //       if (Array.isArray(response.data)) {
-  //         setSessions(response.data); // Set the sessions state directly
-  //         setCurrentSession(response.data[0]?._id);
-  //       } else {
-  //         console.error("Unexpected response structure", response);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching sessions:", error);
-  //     });
-  // }, []);
   useEffect(() => {
     axios
       .get(`${apiUrl}/api/sessions`)
@@ -155,23 +140,36 @@ const Layout1Topbar = () => {
       });
   }, []);
 
-  // const handleSessionChange = (sessionId) => {
-  //   const selectedSession = sessions.find(
-  //     (session) => session._id === sessionId
-  //   );
-  //   setCurrentSession(selectedSession);
-  //   // Perform any additional actions on session change
-  // };
-  // const handleSessionChange = (sessionId) => {
-  //   const selectedSession = sessions.find(
-  //     (session) => session._id === sessionId
-  //   );
-  //   if (selectedSession) {
-  //     console.log("Switching to session:", selectedSession);
-  //     setCurrentSession(selectedSession);
-  //     // Perform any additional actions on session change
-  //   }
-  // };
+  // useEffect(() => {
+  //   axios
+  //     .get(`${apiUrl}/api/all-sessions`)
+  //     .then((response) => {
+  //       if (response.data.success && Array.isArray(response.data.data)) {
+  //         const formattedSessions = response.data.data.map(
+  //           (session, index) => ({
+  //             id: index, // Generate a unique ID for each session
+  //             name: session, // The session name like "2022-2023"
+  //             isActive: index === 0, // Assume the first session as active for now
+  //           })
+  //         );
+
+  //         setSessions(formattedSessions);
+
+  //         const activeSession = formattedSessions.find((s) => s.isActive);
+  //         if (activeSession) {
+  //           setCurrentSession(activeSession);
+  //         } else {
+  //           console.warn("No active session found");
+  //         }
+  //       } else {
+  //         console.error("Unexpected response structure", response);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching sessions:", error);
+  //     });
+  // }, []);
+
   const handleSessionChange = (sessionId) => {
     const selectedSession = sessions.find(
       (session) => session._id === sessionId
@@ -203,6 +201,28 @@ const Layout1Topbar = () => {
         });
     }
   };
+
+  // const handleSessionChange = (sessionId) => {
+  //   const selectedSession = sessions.find(
+  //     (session) => session.id === sessionId
+  //   );
+
+  //   if (selectedSession) {
+  //     console.log("Switching to session:", selectedSession);
+
+  //     // Set as current session locally
+  //     setCurrentSession(selectedSession);
+
+  //     // Update active status in session list
+  //     setSessions((prevSessions) =>
+  //       prevSessions.map((session) =>
+  //         session.id === sessionId
+  //           ? { ...session, isActive: true }
+  //           : { ...session, isActive: false }
+  //       )
+  //     );
+  //   }
+  // };
 
   return (
     <>
@@ -247,6 +267,42 @@ const Layout1Topbar = () => {
                 </StyledItem>
               )}
             </MatxMenu>
+
+            {/*} <MatxMenu
+              menuButton={
+                <UserMenu>
+                  <Hidden xsDown>
+                    <Span>
+                      <strong style={{ display: "flex", alignItems: "center" }}>
+                        {currentSession?.name
+                          ? `Current Session: ${currentSession.name}`
+                          : "No active session"}
+                        <Icon style={{ fontSize: "20px", marginLeft: "5px" }}>
+                          arrow_drop_down
+                        </Icon>
+                      </strong>
+                    </Span>
+                  </Hidden>
+                </UserMenu>
+              }
+            >
+              {sessions.length > 0 ? (
+                sessions.map((session) => (
+                  <StyledItem
+                    key={session.id}
+                    onClick={() => handleSessionChange(session.id)}
+                  >
+                    <Link>
+                      <Span>{session.name}</Span>
+                    </Link>
+                  </StyledItem>
+                ))
+              ) : (
+                <StyledItem>
+                  <Span>No sessions available</Span>
+                </StyledItem>
+              )}
+            </MatxMenu>*/}
           </Box>
 
           <Box display="flex" alignItems="center">

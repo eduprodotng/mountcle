@@ -109,7 +109,7 @@ const JwtRegister = () => {
     // Assuming you have the JWT token stored in localStorage
     const token = localStorage.getItem("jwtToken");
     // Fetch classes from your API
-    console.log(token)
+    console.log(token);
     fetch(`https://doneapi.vercel.app/api/class`, {
       method: "GET",
       headers: {
@@ -119,7 +119,7 @@ const JwtRegister = () => {
       .then((response) => response.json())
       .then((data) => {
         setClassData(data);
-        console.log(data)
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching classes:", error);
@@ -172,7 +172,7 @@ const JwtRegister = () => {
         date: cleanedValues.date,
         AdmNo: cleanedValues.AdmNo,
         parentsName: cleanedValues.parentsName,
-        studentName: cleanedValues.studentName
+        studentName: cleanedValues.studentName,
       });
 
       console.log("role", values.role);
@@ -192,7 +192,8 @@ const JwtRegister = () => {
     <div className="authincation d-flex flex-column flex-lg-row flex-column-fluid">
       <div
         className="login-aside text-center d-flex flex-column flex-row-auto"
-        style={{ backgroundColor: "#000080 !important" }}>
+        style={{ backgroundColor: "#000080 !important" }}
+      >
         <div className="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
           <div className="text-center mb-lg-4 mb-2 pt-5 logo"></div>
           <h3 className="mb-2 text-white">
@@ -211,11 +212,13 @@ const JwtRegister = () => {
               <div className="col-xl-12 tab-content">
                 <div
                   id="sign-up"
-                  className="auth-form tab-pane fade show active form-validation">
+                  className="auth-form tab-pane fade show active form-validation"
+                >
                   <Formik
                     onSubmit={handleFormSubmit}
                     initialValues={initialValues}
-                    validationSchema={validationSchema}>
+                    validationSchema={validationSchema}
+                  >
                     {({
                       values,
                       errors,
@@ -313,7 +316,8 @@ const JwtRegister = () => {
                               <InputAdornment position="end">
                                 <IconButton
                                   onClick={() => setShowPassword(!showPassword)}
-                                  edge="end">
+                                  edge="end"
+                                >
                                   {showPassword ? (
                                     <VisibilityOff />
                                   ) : (
@@ -324,26 +328,13 @@ const JwtRegister = () => {
                             ),
                           }}
                         />
-                        <FormControl
+                        {/*}  <FormControl
                           component="fieldset"
                           sx={{ mb: 3, width: "100%" }}>
                           <FormLabel component="legend">
                             <CustomLabel label="Select a Session" required />
                           </FormLabel>
-                          {/*} <RadioGroup
-                            name="role"
-                            value={values.role}
-                            onChange={handleChange}
-                          >
-                            {roles.map((role) => (
-                              <FormControlLabel
-                                key={role}
-                                value={role}
-                                control={<Radio />}
-                                label={role}
-                              />
-                            ))}
-                            </RadioGroup> */}
+                      
 
                           <TextField
                             fullWidth
@@ -359,10 +350,11 @@ const JwtRegister = () => {
                               </MenuItem>
                             ))}
                           </TextField>
-                        </FormControl>
+                        </FormControl>*/}
                         <FormControl
                           component="fieldset"
-                          sx={{ mb: 3, width: "100%" }}>
+                          sx={{ mb: 3, width: "100%" }}
+                        >
                           <FormLabel component="legend">
                             <CustomLabel label="Select a Role" required />
                           </FormLabel>
@@ -389,7 +381,8 @@ const JwtRegister = () => {
                             name="role"
                             value={values.role}
                             onChange={handleChange}
-                            sx={{ mb: 3 }}>
+                            sx={{ mb: 3 }}
+                          >
                             {roles.map((role) => (
                               <MenuItem key={role} value={role}>
                                 {role}
@@ -445,12 +438,14 @@ const JwtRegister = () => {
                               name="classname" // Make sure the name matches your form field
                               value={values.classname}
                               onChange={handleChange}
-                              sx={{ mb: 3 }}>
+                              sx={{ mb: 3 }}
+                            >
                               {Array.isArray(classData) &&
                                 classData.map((classItem) => (
                                   <MenuItem
                                     key={classItem._id}
-                                    value={classItem.name}>
+                                    value={classItem.name}
+                                  >
                                     {classItem.name}
                                   </MenuItem>
                                 ))}
@@ -517,7 +512,8 @@ const JwtRegister = () => {
                           loading={loading}
                           variant="contained"
                           sx={{ mb: 2, mt: 3 }}
-                          class="btn btn-block btn-primary">
+                          class="btn btn-block btn-primary"
+                        >
                           Register
                         </LoadingButton>
 
@@ -528,7 +524,8 @@ const JwtRegister = () => {
                             style={{
                               color: theme.palette.primary.main,
                               marginLeft: 5,
-                            }}>
+                            }}
+                          >
                             Login
                           </NavLink>
                         </Paragraph>
