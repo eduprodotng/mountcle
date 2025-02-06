@@ -107,6 +107,7 @@ const Payments = () => {
 
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const [students, setStudents] = useState([]);
 
@@ -118,7 +119,7 @@ const Payments = () => {
 
         for (const className of classSet) {
           const res = await fetch(
-            `http://localhost:8800/api/students/${currentSession._id}/${className}`
+            `${apiUrl}/api/students/${currentSession._id}/${className}`
           );
           const classStudents = await res.json();
           studentData.push(...classStudents);
@@ -209,7 +210,7 @@ const Payments = () => {
       try {
         if (currentSession) {
           const response = await axios.get(
-            `http://localhost:8800/api/receipt-session/${currentSession._id}`
+            `${apiUrl}/api/receipt-session/${currentSession._id}`
           );
           const paymentData = response.data;
 
