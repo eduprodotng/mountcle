@@ -137,7 +137,7 @@ const JwtLogin = () => {
         <div className="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
           <div className="text-center mb-lg-4 mb-2 pt-5 logo">
             <img
-              src={`https://edupros.s3.amazonaws.com/${accountSettings.schoolLogo}`}
+              // src={`https://edupros.s3.amazonaws.com/${accountSettings.schoolLogo}`}
               style={{
                 width: "200px",
                 height: "130px",
