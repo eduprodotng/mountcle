@@ -170,10 +170,10 @@ const Teacher = () => {
     }
   };
   const updateTableData = (newSubject) => {
-    // Assuming data is an array
-    setTableData([...data, newSubject]);
+    // Ensure `data` is an array before spreading it
+    setTableData([...(Array.isArray(data) ? data : []), newSubject]);
 
-    reFetch(); // Trigger data refetch after updating tableData1
+    reFetch(); // Trigger data refetch after updating tableData
   };
 
   return (

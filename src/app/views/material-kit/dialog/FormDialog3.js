@@ -92,6 +92,8 @@ export default function FormDialog3({ updateTableData }) {
                 setSubmitting(false);
                 return;
               }
+              console.log("Sending data to backend:", values, currentSession); // Add this line
+
               try {
                 const response = await axios.post(`${apiUrl}/api/register`, {
                   ...values,
