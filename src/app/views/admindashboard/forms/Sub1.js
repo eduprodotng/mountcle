@@ -85,9 +85,14 @@ const Sub1 = () => {
   const { data, loading, fetchedData, error, reFetch } = useFetch(
     currentSession ? `/get-subject/${className}/${currentSession._id}` : null
   );
+  // useEffect(() => {
+  //   // Set the fetched data to the state
+  //   setSubData(fetchedData || []);
+  // }, [fetchedData]);
   useEffect(() => {
-    // Set the fetched data to the state
-    setSubData(fetchedData || []);
+    if (fetchedData) {
+      setSubData(fetchedData);
+    }
   }, [fetchedData]);
 
   const [subData, setSubData] = useState([]);
@@ -187,11 +192,15 @@ const Sub1 = () => {
     }
   };
 
+  // const updateTableData = (newSubject) => {
+  //   // Assuming data is an array
+  //   setTableData([...data, newSubject]);
+  //   reFetch(); // Trigger data refetch after updating tableData1
+  // };
   const updateTableData = (newSubject) => {
-    // Assuming data is an array
-    setTableData([...data, newSubject]);
-    reFetch(); // Trigger data refetch after updating tableData1
+    setSubData((prevData) => [...prevData, newSubject]); // Append new data
   };
+
   return (
     <Fragment>
       <ContentBox className="analytics">

@@ -240,7 +240,6 @@ export default function FormDialogT({ updateTableData }) {
         toast.error("Failed to create subject");
       }
     } catch (err) {
-      console.error("An error occurred during subject creation:", err);
       toast.error("An error occurred during subject creation");
     }
   };
